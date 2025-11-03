@@ -18,8 +18,7 @@ def run_chain(iChain):
         output["acceptance_history"], 
         output["residuals"], 
         output["AR_parameter"], 
-        output["new_parameter"], output["sigma_prop"], output["D"],
-        output["D_pac"], output["D_med"], output["D_car"]
+        output["new_parameter"], output["sigma_prop"], output["D"]
     )
 
 start=time.time()
