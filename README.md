@@ -1,6 +1,6 @@
 # INDITEK-2.0
 
-TThis is the second version of INDITEK model, a global model of diversification (#genera My^-1) of marine invertebrates in the Phanerozoic (from 541 Ma to present).
+This is the second version of INDITEK model, a global model of diversification (#genera My^-1) of marine invertebrates in the Phanerozoic (from 541 Ma to present).
 
 This version focuses on diversification on the continental platform, where most diversity emerges, in order to speed up the model to simulations of ~30 seconds.
 The model speed is key to allow applying a Bayesian Markov chain Monte Carlo (MCMC) framework. With the new MCMC module, we can run thousands of simulations in multiple chains to infer the probability of the model parameter values. 
@@ -10,7 +10,7 @@ The aim of this upgraded version is to be able to explore the probability of dif
 This work was funded by national research grant PID2023-152076NB-I00  (INDICIOS project) from the Spanish government.
 The model is further explained in the publication: INDITEK-2.0: A Bayesian inverse eco-evolutionary modelling framework for reconstructing Phanerozoic biodiversity; https://doi.org/10.1101/2025.08.22.671786
 
-This version is written in Python 3.14.
+This version is written in Python 3.9.18 and tested with 3.8.12.
 
 # How to run the model:
 
