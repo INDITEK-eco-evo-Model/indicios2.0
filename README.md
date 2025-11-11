@@ -24,27 +24,31 @@ To run the model, you need to have in the same folder the functions (.py) and th
 - Point_ages_xyz.mat: floor age data from the plate-tectonic/paleo-elevation model.
 - Point_foodtemp.mat: food-temp data from the cGenie earth-system model.
 - landShelfOceanMask.mat: 0-2 mask to distinguish land-shelf-ocean grids.
-- LonDeg.mat: degrees of longitud according to the latitude with distance equivalent to 1 degree at the equator. This is used to search for nearest neighbours (NN) coastal points in the square to account for immigration.
+- LonDeg.mat: degrees of longitud according to the latitude with distance equivalent to 1º at the equator.
+  This is used to search for active nearest neighbours (NN) in a restricted area, to mimick immigration from those points to points in a newly submerged continental platform.
 - rhoExt.csv: mass extinction patterns to input in the model.
 - observed_D.npz: The proof of concept data, the pattern diversity nowadays.
-- indices_points.npz: The position of the points that we follow backwards across time slices in the three hotspots (in the publication: Mediterranean, Caribbean and Pacific). This allows to track how the diversity at a certain location has evolved along time.
+- indices_points.npz: The position of the points that we follow backwards across time slices in the three hotspots (in the publication: Mediterranean, Caribbean and Pacific).
+  This allows to track how the diversity has evolved along time at a certain location.
+
+ To run the Metropolis-Hastings (M-H) Markov Chain Monte Carlo (MCMC) algorithm you run **indicios_7param.py** which loads the data, sets the priors and prepares the M-H MCMC chains to run in parallell, then it runs **metropolis_7param.py** and retrieves the simulations outputs:
+ 
+- **indicios_7param.py**: loads the data, calls the metropolis_7param.py function and saves the results. 
+- **metropolis_7param.py**: runs the M-H MCMC algorithm, running **principal_proof.py** (the diversification model module) at each iteration, and estimating the most probable parameters according to model-observation fit.
 
 # Model functions
-The module principal_proof.py runs the following sequence of functions with their corresponding outputs:
+The module **principal_proof.py** runs the following sequence of functions with their corresponding outputs:
 
-- rhonet.py: calculates diversification rate (rho) and effective carrying capacity (Keff), furthermore it calculates the index with the point time slices that suffer a mass extinction, (ext_index)
-- alphadiv.py: computes diversity in the model particles → D_shelf and rho_shelf_eff
-- gridMean.py: calculates the mean diversity in 0.5ºx0.5º grids
-- inditek_model_proof.py: compares the mean diversity with the proof diversity and calculates the Residual Sum of Squares Error.(RSME)
+- **rhonet.py**: calculates diversification rate (*rho*) and effective carrying capacity (*Keff*), furthermore it records the index with the time slices that suffer a mass extinction according to rhoExt, (*ext_index*)
+- **alphadiv.py**: computes diversity in the model particles → *D_shelf* and *rho_shelf_eff*
+- **gridMean.py**: calculates *D*, the mean diversity in 0.5ºx0.5º grids
+- **inditek_model_proof.py**: compares *D* with *observed_D* and calculates the Residual Sum of Squares Error (RSME)
 
-Then, to run the Metropolis-Hastings algorithm, you need to run the following scripts:
 
-- metropolis_7param.py: Run the metropolis-hastings algorithm, calling principal_proof.py for the model output, and estimate the most probable parameters.
-- indicios_7param.py: Load the data, call the metropolis function and save the results.
 
 # Figures 2 to 5:
 
-The script visualization.py plots the main results of the manuscript: (1) MCMC Chain Trajectories for parameter inference. (2) Proof-of-concept study used to validate the Bayesian inverse modelling framework of INDITEK-2.0. (3) The diversity maps of the calibrated model and of the proof model. It need to be in the  same folder of INDITEK*.npz generated with indicios_7param.py. 
+The script **visualization.py** plots the main results of the manuscript: (1) MCMC Chain Trajectories for parameter inference. (2) Proof-of-concept study used to validate the Bayesian inverse modelling framework of INDITEK-2.0. (3) The diversity maps of the calibrated model and of the proof model. It needs to be in the  same folder of INDITEK*.npz generated with indicios_7param.py. 
 
 Explanations of all the functions are written inside them. For any further doubt, do not hesitate to contact me: (Email)
 
