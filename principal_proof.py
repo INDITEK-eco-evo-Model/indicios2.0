@@ -8,9 +8,7 @@ from alphadiv import alphadiv
 from gridMean import inditek_gridMean_alphadiv
 from inditek_model_proof import inditek_model_proof
 
-
 start_time = time.time()
-
 
 def principal(kfood, Kmin, food_shelf, temp_shelf, ext_pattern, Kmax_mean, spec_min_mean, spec_max_mean, Q10_mean, ext_intercept_shelf_mean,ext_slope_mean, shelf_lonlatAge, Point_timeslices, latWindow,lonWindow,LonDeg, landShelfOcean_Lat,landShelfOcean_Lon, landShelfOceanMask, proof):
 #
@@ -69,7 +67,7 @@ def principal(kfood, Kmin, food_shelf, temp_shelf, ext_pattern, Kmax_mean, spec_
      ##std_obis=data_obis["obis_error"]
      ##ids_obis=data_obis["index"]
      ##
-     #data_proof=np.load("data/data_proof.npz")
+     #data_proof=np.load("data/observed_D.npz")
      #proof=data_proof[ "proof"]
      ##indices=np.load("index_points.npz")
      ##indices_pac=indices["indices_pac"]

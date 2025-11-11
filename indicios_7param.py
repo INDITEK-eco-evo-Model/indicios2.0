@@ -117,7 +117,7 @@ landShelfOceanMask = np.flip(landShelfOceanMask, axis=2)
 data_ice=scipy.io.loadmat('data/Point_ice.mat')
 ice_shelf=data_ice["ice_shelf"]
 
-data_proof=np.load("data/data_proof.npz")
+data_proof=np.load("data/observed_D.npz")
 proof=data_proof[ "proof"]
 
 #Pre-allocate variables to store results
