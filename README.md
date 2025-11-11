@@ -33,7 +33,7 @@ To run the model, you need to have in the same folder the functions (.py) and th
 
  To run the Metropolis-Hastings (M-H) Markov Chain Monte Carlo (MCMC) algorithm you run **indicios_7param.py** which loads the data, sets the priors and prepares the M-H MCMC chains to run in parallell, then it runs **metropolis_7param.py** and retrieves the simulations outputs:
  
-- **indicios_7param.py**: loads the data, calls the metropolis_7param.py function and saves the results in the file INDITEK*.npz. 
+- **indicios_7param.py**: loads the data, calls the metropolis_7param.py function and saves the results in the file INDITEK_MCMCoutput.npz, whose structure is detailed below. 
 - **metropolis_7param.py**: runs the M-H MCMC algorithm, running **principal_proof.py** (the diversification model module) at each iteration, and estimating the most probable parameters according to model-observation fit.
 
 # Model functions
@@ -44,11 +44,13 @@ The module **principal_proof.py** runs the following sequence of functions with 
 - **gridMean.py**: calculates *D*, the mean diversity in 0.5ºx0.5º grids
 - **inditek_model_proof.py**: compares *D* with *observed_D* and calculates the Residual Sum of Squares Error (RSME)
 
+The final data are saved in INDITEK_MCMCoutput.npz that contains the following variables:
+
 
 
 # Figures 2 to 5:
 
-The script **visualization.py** plots the main results of the manuscript: (1) MCMC Chain Trajectories for parameter inference. (2) Proof-of-concept study used to validate the Bayesian inverse modelling framework of INDITEK-2.0. (3) The diversity maps of the calibrated model and of the proof model. It needs to be in the  same folder of INDITEK*.npz generated with indicios_7param.py. 
+The script **visualization.py** plots the main results of the manuscript: (1) MCMC Chain Trajectories for parameter inference. (2) Proof-of-concept study used to validate the Bayesian inverse modelling framework of INDITEK-2.0. (3) The diversity maps of the calibrated model and of the proof model. It needs to be in the  same folder of INDITEK_MCMCoutput.npz generated with indicios_7param.py. 
 
 Explanations of all the functions are written inside them. For any further doubt, do not hesitate to contact us:
 gloriaherrero@icm.csic.es cgcomas@icm.csic.es
